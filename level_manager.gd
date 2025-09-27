@@ -2,10 +2,10 @@ extends Node2D
 
 # --- Level Scenes ---
 var level_scenes := [
-	preload("res://Level1.tscn"),
-	preload("res://Level2.tscn"),
-	preload("res://Level3.tscn"),
-	preload("res://Level4.tscn")
+	preload("res://level1.tscn"),
+	preload("res://level2.tscn"),
+	preload("res://level3.tscn"),
+	preload("res://level4.tscn")
 ]
 
 # --- Enemy Scenes ---
