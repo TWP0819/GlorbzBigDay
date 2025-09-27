@@ -1,0 +1,115 @@
+[gd_scene load_steps=11 format=3 uid="uid://bb7y3col82jgy"]
+
+[ext_resource type="Script" uid="uid://8xclwtj0wr3r" path="res://scientist.gd" id="1_3li26"]
+[ext_resource type="Texture2D" uid="uid://bxlhj5u8bvwf7" path="res://scientistdamage.png" id="2_erjlx"]
+[ext_resource type="Texture2D" uid="uid://1q0av1qn0k3o" path="res://scientist.png" id="2_xyk3v"]
+[ext_resource type="Texture2D" uid="uid://c2ni551aqa3fm" path="res://scientistwalk1.png" id="4_erjlx"]
+[ext_resource type="Texture2D" uid="uid://bwbijpwuv2boh" path="res://scientistwalk2.png" id="5_4i3wb"]
+[ext_resource type="AudioStream" uid="uid://cbh70mqlxedsp" path="res://pistol.wav" id="6_4i3wb"]
+[ext_resource type="AudioStream" uid="uid://bssmxqkkhwtd2" path="res://thud1.mp3" id="7_angil"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xyk3v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_erjlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xyk3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_erjlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xyk3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_erjlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xyk3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_erjlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_erjlx")
+}],
+"loop": false,
+"name": &"die",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_erjlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xyk3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_erjlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xyk3v")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xyk3v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_erjlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4i3wb")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3li26"]
+size = Vector2(60, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xi1s6"]
+size = Vector2(58, 65)
+
+[node name="Scientist" type="CharacterBody2D" groups=["scientist"]]
+light_mask = 2
+script = ExtResource("1_3li26")
+
+[node name="scientist_sprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.24115604, 0.24115604, 0.24115601, 1)
+rotation = 1.5707964
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_xyk3v")
+animation = &"die"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_3li26")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_xi1s6")
+
+[node name="gunshot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_4i3wb")
+volume_db = 1.01
+
+[node name="thwack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_angil")
+
+[connection signal="animation_finished" from="scientist_sprite" to="." method="_on_scientist_sprite_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

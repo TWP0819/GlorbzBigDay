@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://btcg00iskg3ek"
+path="res://.godot/imported/flame long.mp3-84bc582593ad256e92c4c3e5b85320f8.mp3str"
+
+[deps]
+
+source_file="res://flame long.mp3"
+dest_files=["res://.godot/imported/flame long.mp3-84bc582593ad256e92c4c3e5b85320f8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

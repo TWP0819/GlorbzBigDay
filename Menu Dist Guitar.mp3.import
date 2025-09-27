@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://v6fpit14ymdl"
+path="res://.godot/imported/Menu Dist Guitar.mp3-0723ba8b76ee2d71fb7105bb9fe36d21.mp3str"
+
+[deps]
+
+source_file="res://Menu Dist Guitar.mp3"
+dest_files=["res://.godot/imported/Menu Dist Guitar.mp3-0723ba8b76ee2d71fb7105bb9fe36d21.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

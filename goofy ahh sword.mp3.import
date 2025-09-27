@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cje7d0kuqls4c"
+path="res://.godot/imported/goofy ahh sword.mp3-908b1eec6064f1cf22eade0a363234ca.mp3str"
+
+[deps]
+
+source_file="res://goofy ahh sword.mp3"
+dest_files=["res://.godot/imported/goofy ahh sword.mp3-908b1eec6064f1cf22eade0a363234ca.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

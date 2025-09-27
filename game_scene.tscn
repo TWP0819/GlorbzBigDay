@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbvj48b3t6kp2"]
+
+[ext_resource type="PackedScene" uid="uid://c6ymhrqvaaynk" path="res://glorb.tscn" id="1_mlf6e"]
+[ext_resource type="Texture2D" uid="uid://b51k0yhoa7aor" path="res://spotlight.png" id="2_kdryc"]
+[ext_resource type="AudioStream" uid="uid://d1n0bsjl2t0q0" path="res://Main Menu Rv.mp3" id="4_6e45b"]
+[ext_resource type="Script" uid="uid://bfkibj0vjsh2" path="res://level_manager.gd" id="4_mixcd"]
+[ext_resource type="PackedScene" uid="uid://dq68x8vyedvgr" path="res://UpgradeMenu.tscn" id="4_mj2jn"]
+[ext_resource type="AudioStream" uid="uid://dlneyl6lhixfn" path="res://Main Theme Dis.mp3" id="5_e35lh"]
+[ext_resource type="Texture2D" uid="uid://btq83qiufxhii" path="res://gamecard.png" id="6_6e45b"]
+
+[node name="Game" type="Node2D"]
+
+[node name="glorb" parent="." instance=ExtResource("1_mlf6e")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="glorb"]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="glorb"]
+scale = Vector2(6, 6)
+energy = 3.81
+shadow_enabled = true
+texture = ExtResource("2_kdryc")
+
+[node name="LevelManager" type="Node2D" parent="."]
+script = ExtResource("4_mixcd")
+
+[node name="MenuOST" type="AudioStreamPlayer" parent="LevelManager"]
+stream = ExtResource("4_6e45b")
+volume_db = -2.862
+
+[node name="GameOST" type="AudioStreamPlayer" parent="LevelManager"]
+stream = ExtResource("5_e35lh")
+volume_db = -15.266
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="StartMenu" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="gamecard" type="Sprite2D" parent="UI/StartMenu"]
+position = Vector2(18.5, 20.666626)
+scale = Vector2(0.27638888, 0.27638894)
+texture = ExtResource("6_6e45b")
+
+[node name="StartButton" type="Button" parent="UI/StartMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = 329.0
+offset_right = -118.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start Game (C)"
+
+[node name="Label" type="Label" parent="UI/StartMenu"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = -116.0
+offset_right = 340.0
+offset_bottom = -15.0
+theme_override_colors/font_color = Color(0, 0.7607843, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "Arrow Keys - Move / Select
+Z - Attack / Confirm
+X - Block
+Space - Dash "
+
+[node name="UpgradeMenu" parent="UI" instance=ExtResource("4_mj2jn")]
+
+[connection signal="pressed" from="UI/StartMenu/StartButton" to="LevelManager" method="_on_start_button_pressed"]

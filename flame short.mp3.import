@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dirvkvlh767vh"
+path="res://.godot/imported/flame short.mp3-81f630d82b18db174c0b015ad14b4da1.mp3str"
+
+[deps]
+
+source_file="res://flame short.mp3"
+dest_files=["res://.godot/imported/flame short.mp3-81f630d82b18db174c0b015ad14b4da1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
